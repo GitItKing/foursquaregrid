@@ -20,4 +20,5 @@ The sections do not move physically in the html code. All movement is down with 
 positioning. This is coded that way because using a clone method would make the physically  
 moved div's reload the embedded feed and this was undesirable.
 
-
+Note: The font used and the inactive(here) 'refresh feeds' icons were used to maintain 
+size dimensions and locations that are used on the target page with the userscript.
