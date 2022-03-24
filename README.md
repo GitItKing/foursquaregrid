@@ -3,10 +3,10 @@ Four Square Grid html demo.
 
 [Demo](https://gititking.github.io/foursquaregrid/four_square_grid_cells_swap.html)
 
-This was used as a test case for a userscript that had four  
-live feeds displayed. The reason for making the sections move is to facilitate a screen  
-capture area that is only necessary to capture one section. By moving the sections around  
-all sections can be moved into say a lower left corner.  
+This was used as a test case for a userscript that had four live feeds displayed.  
+The reason for making the sections move is to facilitate a screen capture area  
+that is only necessary to capture one section. By moving the sections around all  
+sections can be moved into say a lower left corner.  
   
 Do not expect any customizations. There will be no support here for beyond four sections.  
 Some coding might be peculiar, ie. the main four images use 'png' files whereas the  
