@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Four Square Grid</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.0/css/solid.css" integrity="sha384-ltWlpN+Dl8XfKEnC9oW+dDRF8Z7jsYkxQ/WMRoJ2VHH5G2nQZ4if2NWwmV0ybzZ7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.0/css/fontawesome.css" integrity="sha384-RLM8Rxp/DcBfCfSI3bGwwoMMxxy34D2e58WAqXmmdnh0WYlAQ8jeOB3A1ed5KUSm" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var horz = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAALHRFWHRDcmVhdGlvbiBUaW1lAFN1biAyMCBNYXIgMjAyMiAwNToxMDoxNiAtMDUwMJ3fk+cAAAAHdElNRQfmAxQJITev4WNEAAAACXBIWXMAAAsSAAALEgHS3X78AAAABGdBTUEAALGPC/xhBQAABJ9JREFUeNrtmitMM0EQxxtKgfJ+B0ICLY9AKEkD5REUNCgUQfAIAoIDJEFADUESgiCoKtIQQioqEBUViIqKCgQCgUAgKhAIBAJB+P5h0sl+Le1t79G7Jv0L0hy9ud/Nzs7O7Nb2U4KyyX/16+vrNa3v729dHg877+/vBkIHg0FbWuBWDfr4+BgIBDweT3NzM1mrr68fGxs7PT2FX3SG9vv99IyGhgbV0JOTk45f2bJUXV3d1NR0fX2tFfrj4+P5+TkcDi8tLcGiduiOjg4yUllZWVtba7fbCZfR6+rqMBTqoUEGKzU1NTAkukQjNHDh6a2trWg0mkql4JdYLIbwqKqqIvs9PT2aoBFt2eOoBbqvr299ff3l5SXjOtCdTifZx5A+PT1p8rS+0Hnk8/nY/s3NjUrozK8aDD03N0f2EejIJKUB7Xa7yX5jY2MoFCoBaEQ5T3fEdDKZtDo01kUOaGhkZESBxArQyCecqhEbSIVWhz4+PuZkh+Vmc3NTmcRc6EgkwsRwttfrlSk/zIROJBIwRTax7g4MDHx+fkqRmAUt+hgfXC7X29ubLIkp0JeXl1wgINOh9CuoqjYB+vDwkH2MXDE/Py8ZFeZAIx+vrKwgRTDxxsaGiiYoHzTMvQoSoTGH+LpkuwHNzMwwMT7s7Oy85hbqPjXQuao8LnxJ8Xi80LGS0cnJiUroP+tpUagTLActY91a0JZVGdosaMRx3GLKXt4zoRH+BU2XIii79SpDmwVdkjFdEipDl6E1QaOujUajFxcX29vb09PTqOKRYe7u7vQ6wYCurq7G08q/IaYAjRbo4OBgeHgY1TMKVLGGttvtaDpQlB4dHWlHTyaTaMXZeJ7iThkauU/coCdxb0fCw/x+f6EdniikMz550QeaNiWA7nA4RkdH9/b2gsHg/v4+BpF9g9dYXFxUR4w+zev1ZrhGKzRMwA3n5+fZXeDZ2Rl7HZEj3yaKQldLO6Vi7GmCxqCHw+E8NLwz297eHpduXli89YEOVzzT0QStqM7OTnpMW1tb/u3kbOElqS1HbGBWICMVA/rh4YHHFA4rKIekUim8J2Uht9uNIS0GNJI0nazZfvdAbm9v5e9FvHk8Hpp8eFs65jIKenZ2Fkmjv78flLzhgliUeYao1dVVSkq4NxaL0UWjoDMSdkVFBdALnX/IOViVyMcinIHQyHHimTagu7u7FY8aWPf390SMG5eXl8V/GQUd+hVy9u7ubm9vLz2eCCRTBx2tY/KhNMhYRIuUPQKBQGtrKz2mq6tL5hauWzAxxv9XS0sLQ2P0FCsnldDIcbzNB2fL7PwW2hoasi3mcrnIOlaZSCQiA+3MIbHKoyuYPIZA85MQrIq/0PhJz4o/hTKdoTFH6WIem39Do2JcWFjAIpLrNriWD6aQcVW/OUmfiYgYxSqNYB0aGgK6ONkRzWg0mBhDiXxiFWjGovUP6/bU1BSmNqY/r4j47PP5tDcvukFjKtAPjHIJ6BMTEyp+oGYUNJyHwgA94uDgICMidvGXFkWEDVcO2rW2toZoVEwaCtAZLwDHJxIJTD4s2pjUunhXFIxzJpFJRCW57/EPMvPWAW5Xpe4AAAAASUVORK5CYII=';
+        var vert = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAALHRFWHRDcmVhdGlvbiBUaW1lAFN1biAyMCBNYXIgMjAyMiAwNToxMDoxNiAtMDUwMJ3fk+cAAAAHdElNRQfmAxQJHiED6/wpAAAACXBIWXMAAAsSAAALEgHS3X78AAAABGdBTUEAALGPC/xhBQAABPFJREFUeNrtmj1I81wUx4vftVo/qlZFUYvSoUMp2qqgog6KIIjiB7iIg7g66OAkRRyKSBGRIg5SxMHBwcHBwcGhg4NDB4cODs/g4ODg4OAgvn968JA3aW7StHlaefofpCb33vxycu6559zE8v0LZdHf9PPz88+Pvr6+skXw9vaGkc2CPjk5sfwI3IKWoVBodXU1GAxGo1HlWfQ9PT2dmppyuVxWq5UGrK2t9Xq9BwcHr6+v2YQeGxujC1RXV4uhuSV+yE719/eXlpaWlZVZUqmyshJnw+FwRtDv7++JROLy8nJmZqampiZz6MbGRkYEekVFBX4UFxdXVVXxcZhfzC2CBhmGwLg2m01qjwyhgYgx4R6wRTwep6lyc3Pj8XhgaepYXl4u8BMNaKkBsgLd0dExPz///Pys7PXx8eF0OqljfX09bsm4pbMLLdbKygp1hGdvbW0ZgZY3NR96aGiIOtrt9pSRJ++gb29v2adxCYM+bTY0sDDO4+Pj9fX12toaJh/1wkTCERFJDqERsylQwMAIKRTsmpqaYHINkhxC+3w+6fwuKirCDUQiEc0cIZfQg4ODslUGwprQ3d2N8Jen0CTwPT09ISqDlVIR2HtkZCSvoVlI95A28VxMuQDlHTSEtZ3j9NXV1e+AXl9f59wDaWpeQIt7QW63mzo6HA5B4Pur0DjS09OjtnCcn59jZLY0XNwINOLlH4mk0LFYjI8riyUBNAEhUOzs7FBqihUR7js+Ps6VAcbf3NwUmU9wTi3Lk9Ud9/f3aUHzUoKFEDeA0TjloMFHR0fF64uRfFoqlDP6oanWUhsTuLiH7e1t8cpi0NIy6Yf+TtZvFxcXKHv9fj8KAngC1sK2trZAIACX0FPVfqc1EfXLcMjTqQJ0AboArUPDw8O/D7qrq4ugEdoK0AXoAvQ/C420Cfnu3t7e9PT05OQk8mD8K37hkC702dmZ70eCLTxtaOSHSLva29tR1qNIRkpJHCUlJTabDUfC4bAaelrQDw8PvOkBBYNB49AwMG+uccXB6JbkrgpsnyE0clHeNsgONFVs+Ot0Oufm5g4PD0OhUG9vL7/dQTqPws4wNB6U1+uVmSZTaAzR2toKJ5MVP7u7u1x9wH8MQy8vL9OLEWn9lhE0fBplc8paDdUH+wncUenZeqCPjo7ozlEgSt/pZAQtFtf6dXV1KKfThUaFRsUsfANJ1cLCgunQMC1tJ5PHJxKJtKBfXl4cDocl+SYOLfFI/wY0TGu32+ka8BN4i35o3LDH46HJx7uMpkPDywcGBvgaWA6UbQTQi4uL5FrwY974Mh16Y2OD5w1Mpdw/EEDv7+/TI0JHKZy50JFIhIkRNyYmJlI2Swl9d3dHxJiCs7Oz0vYmQuOqHJ4xh5qbm5XeLICmV+vo6Ha7ZXtIZkEjRHCYsyS/dFAGDTE0363L5fL9X4ibPHJLS4tm5qQLGnwNDQ1IlTg2C4jF0PolMLk2dCwWw5MlYqy3sISYWABtVZE0y6MjiKTGoYmYZ15nZ6eePcKU0FF1BQIBhsYcpYPxeNwINJJ9XkTg0H19fZqbsAJogbI2EY+Pj6Wf0iAj0/+xVW6gkR5w0gw/hkP71OX3+2WPMjfQXAHoEZYb2bqYM2jMX6s+IfuRQaPGCSYl/gKCtbS0hOepGTQ0oDHhoulI52sHNSFG8VCCoKEBnef6DwKRmQLwjI2JAAAAAElFTkSuQmCC';
+        var swapRow = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAALHRFWHRDcmVhdGlvbiBUaW1lAFN1biAyMCBNYXIgMjAyMiAwNToxMDoxNiAtMDUwMJ3fk+cAAAAHdElNRQfmAxUTNSCrkXAVAAAACXBIWXMAAAsSAAALEgHS3X78AAAABGdBTUEAALGPC/xhBQAAANFJREFUeNrt2MEOhCAMRdH+/09rZjFGHVpoqQ7KfSsSw+vRoAtluSDyzRXln37QoEGDBg0aNGjQw6H7b6awv71UkyWiiz13o70npwntKp0CLcfkoL2loIdESym96EDpy9GiJ46OlXrRp3UO2lvqfRHtXW50rBT069GEGHnkmQYNOhG9v7qtT1s60dURQbT9TqegjRGR41H9CvUfj8pDmQX9W6pdDaPtEaAHR9uyFLTRMxl60X9VZqG1EX9Au9KKTpmUhS73gwYNGjRo0KBB34heAToN0v08BhjpAAAAAElFTkSuQmCC';
+        var swapCol = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAALHRFWHRDcmVhdGlvbiBUaW1lAFN1biAyMCBNYXIgMjAyMiAwNToxMDoxNiAtMDUwMJ3fk+cAAAAHdElNRQfmAxUTNQCQ/1DdAAAACXBIWXMAAAsSAAALEgHS3X78AAAABGdBTUEAALGPC/xhBQAAAO1JREFUeNrt2MEKxCAMBFD//6e77GGhS0216SROZHJuhxcRDbYjoNqvIsK/+UKbaGwPqWgUPW97tEuVRLvps/+04CqGDlzpZ6F77GmIdQ0alp+DBucLLbTQfWIZtHX6MqKHdxsXenJ+YEHHDUyO9jArTY226NYHjvAodFdfBn0mFkNbbQi9AVqluqmSe1ro7dDANtY8i5VBH7jnvMVoH/3BDzyHLwU6cKUd7Q3bduanod9bl6Ex+WloZL7QQgu9BfrmSGZEW/cFI3p4G3OhJyceFnTIdOedRvSofvnAER6F7urLoM/EYmirDaH/6gPeUdL9PYt2wAAAAABJRU5ErkJggg==';
+
+        $(document).on("click", ".refreshFeed", {}, function(jNode) {
+            jNode.stopPropagation();
+            jNode.stopImmediatePropagation();
+            var ifr = "#ifeed" + $(this).data('feed-num');
+            $(ifr, window.parent.document).attr('src', $(ifr, window.parent.document).attr('src'));
+        });
+
+        $(document).on("click", "#zoomUp", function() {
+            var newZ = new Number($('.feeds-wrapper').css('zoom'));
+            var curLevel = Math.round((newZ + .02) * 100) / 100;
+            $('.feeds-wrapper').css('zoom', curLevel);
+            $('#zoomLevel').text(curLevel);
+            if ($('#saveZoom').prop('checked')) {
+                localStorage.setItem('zoomlevel', curLevel);
+            }
+        });
+
+        $(document).on("click", "#zoomDown", function() {
+            var newZ = new Number($('.feeds-wrapper').css('zoom'));
+            var curLevel = Math.round((newZ - .02) * 100) / 100;
+            $('.feeds-wrapper').css('zoom', curLevel);
+            $('#zoomLevel').text(curLevel);
+            if ($('#saveZoom').prop('checked')) {
+                localStorage.setItem('zoomlevel', curLevel);
+            }
+        });
+
+        $(document).on("click", "#zoomReset", function() {
+            $('.feeds-wrapper').css('zoom', '1');
+            $('#zoomLevel').text("1.0");
+            if ($('#saveZoom').prop('checked')) {
+                localStorage.setItem('zoomlevel', '1.0');
+            }
+        });
+
+        $(document).on("change", "#saveZoom", function() {
+            if (this.checked) {
+                localStorage.setItem('zoomlevel', $('.feeds-wrapper').css('zoom'));
+            } else {
+                localStorage.removeItem('zoomlevel');
+            }
+        });
+
+        $(document).on("change", "#chkDark", function() {
+            if (this.checked) {
+                $('img.oriImg').css('filter', 'invert(1)');
+                $('body').css('background-image', 'none').css('background-color', '#000').css('color', '#FFF');
+                localStorage.setItem('bgColor', 'dark');
+            } else {
+                $('img.oriImg').css('filter', 'invert(0)');
+                $('body').css('background-image', 'none').css('background-color', '#FFF').css('color', '#000');
+                localStorage.removeItem('bgColor');
+            }
+        });
+
+        $(document).on("click", ".oriImg", function() {
+            if ($(this).data('src') == "vert") {
+                $('img.oriImg').data('src', 'horz');
+                $(this).attr('src', horz)
+                $('div#grid > div:eq(0)').attr('class', 'tpL'); // was r1
+                $('div#grid > div:eq(1)').attr('class', 'btL'); // was r2
+                $('div#grid > div:eq(2)').attr('class', 'fd1'); // was n1
+                $('div#grid > div:eq(3)').attr('class', 'fd3'); // was n2
+                $('div#grid > div:eq(4)').attr('class', 'fd2'); // was n3
+                $('div#grid > div:eq(5)').attr('class', 'fd4'); // was n4
+                $('div#grid > div:eq(6)').attr('class', 'tpR'); // was r3
+                $('div#grid > div:eq(7)').attr('class', 'btR'); // was r4
+            } else {
+                $(this).attr('src', vert)
+                $('img.oriImg').data('src', 'vert');
+                $('div#grid > div:eq(0)').attr('class', 'tpL'); // was r1
+                $('div#grid > div:eq(1)').attr('class', 'tpR'); // was r2
+                $('div#grid > div:eq(2)').attr('class', 'fd1'); // was n1
+                $('div#grid > div:eq(3)').attr('class', 'fd2'); // was n2
+                $('div#grid > div:eq(4)').attr('class', 'fd3'); // was n3
+                $('div#grid > div:eq(5)').attr('class', 'fd4'); // was n4
+                $('div#grid > div:eq(6)').attr('class', 'btL'); // was r3
+                $('div#grid > div:eq(7)').attr('class', 'btR'); // was r4
+            }
+            $('span.zoomBtns').appendTo('#grid > div.tpL > span:first');
+            $('span.swapBtns').appendTo('#grid > div.tpR > span:first');
+            $('span.chkDark').appendTo('#grid > div.btR > span:first');
+        });
+
+        $(document).on("click", ".colImg", function() {
+            var n1, n2, n3, n4, r1, r2, r3, r4;
+            r1 = $('div#grid > div:eq(0)').attr('class');
+            r2 = $('div#grid > div:eq(1)').attr('class');
+            n1 = $('div#grid > div:eq(2)').attr('class');
+            n2 = $('div#grid > div:eq(3)').attr('class');
+            n3 = $('div#grid > div:eq(4)').attr('class');
+            n4 = $('div#grid > div:eq(5)').attr('class');
+            r3 = $('div#grid > div:eq(6)').attr('class');
+            r4 = $('div#grid > div:eq(7)').attr('class');
+            if ($('img.oriImg').data('src') == 'vert') {
+                // We swap r1&r2, n1&n3, n2&n4 and r3&r4
+                $('div#grid > div:eq(0)').attr('class', r2); // was r1
+                $('div#grid > div:eq(1)').attr('class', r1); // was r2
+                $('div#grid > div:eq(2)').attr('class', n3); // was n1
+                $('div#grid > div:eq(3)').attr('class', n4); // was n2
+                $('div#grid > div:eq(4)').attr('class', n1); // was n3
+                $('div#grid > div:eq(5)').attr('class', n2); // was n4
+                $('div#grid > div:eq(6)').attr('class', r4); // was r3
+                $('div#grid > div:eq(7)').attr('class', r3); // was r4
+            } else {
+                $('div#grid > div:eq(0)').attr('class', r3); // was r1
+                $('div#grid > div:eq(1)').attr('class', r4); // was r2
+                $('div#grid > div:eq(2)').attr('class', n2); // was n1
+                $('div#grid > div:eq(3)').attr('class', n1); // was n2
+                $('div#grid > div:eq(4)').attr('class', n4); // was n3
+                $('div#grid > div:eq(5)').attr('class', n3); // was n4
+                $('div#grid > div:eq(6)').attr('class', r1); // was r3
+                $('div#grid > div:eq(7)').attr('class', r2); // was r4
+            }
+            $('span.zoomBtns').appendTo('#grid > div.tpL > span:first');
+            $('span.swapBtns').appendTo('#grid > div.tpR > span:first');
+            $('span.chkDark').appendTo('#grid > div.btR > span:first');
+        });
+
+        $(document).on("click", ".rowImg", function() {
+            var n1, n2, n3, n4, r1, r2, r3, r4;
+            r1 = $('div#grid > div:eq(0)').attr('class');
+            r2 = $('div#grid > div:eq(1)').attr('class');
+            n1 = $('div#grid > div:eq(2)').attr('class');
+            n2 = $('div#grid > div:eq(3)').attr('class');
+            n3 = $('div#grid > div:eq(4)').attr('class');
+            n4 = $('div#grid > div:eq(5)').attr('class');
+            r3 = $('div#grid > div:eq(6)').attr('class');
+            r4 = $('div#grid > div:eq(7)').attr('class');
+            if ($('img.oriImg').data('src') == 'vert') {
+                // We swap r1&r3, r2&r4, n1&n2 and n3&n4
+                $('div#grid > div:eq(0)').attr('class', r3); // was r1
+                $('div#grid > div:eq(1)').attr('class', r4); // was r2
+                $('div#grid > div:eq(2)').attr('class', n2); // was n1
+                $('div#grid > div:eq(3)').attr('class', n1); // was n2
+                $('div#grid > div:eq(4)').attr('class', n4); // was n3
+                $('div#grid > div:eq(5)').attr('class', n3); // was n4
+                $('div#grid > div:eq(6)').attr('class', r1); // was r3
+                $('div#grid > div:eq(7)').attr('class', r2); // was r4
+            } else {
+                $('div#grid > div:eq(0)').attr('class', r2); // was r1
+                $('div#grid > div:eq(1)').attr('class', r1); // was r2
+                $('div#grid > div:eq(2)').attr('class', n3); // was n1
+                $('div#grid > div:eq(3)').attr('class', n4); // was n2
+                $('div#grid > div:eq(4)').attr('class', n1); // was n3
+                $('div#grid > div:eq(5)').attr('class', n2); // was n4
+                $('div#grid > div:eq(6)').attr('class', r4); // was r3
+                $('div#grid > div:eq(7)').attr('class', r3); // was r4
+            }
+            $('span.zoomBtns').appendTo('#grid > div.tpL > span:first');
+            $('span.swapBtns').appendTo('#grid > div.tpR > span:first');
+            $('span.chkDark').appendTo('#grid > div.btR > span:first');
+        });
+
+        $(document).ready(function() {
+            $('.oriImg').attr('src', vert);
+            $('.rowImg').attr('src', swapRow);
+            $('.colImg').attr('src', swapCol);
+            var zmLevel = localStorage.getItem('zoomlevel');
+            if (zmLevel !== null) {
+                $('.feeds-wrapper').css('zoom', zmLevel);
+                $('#zoomLevel').text(zmLevel);
+                $('#saveZoom').prop('checked', 'true');
+            }
+            var bg = localStorage.getItem('bgColor');
+            if (bg == 'bright') {
+                $('body').css('background-image', 'none').css('background-color', '#FFF').css('color', '#000');
+                $('#chkBright').prop("checked", true);
+            } else if (bg == 'dark') {
+                $('body').css('background-image', 'none').css('background-color', '#000').css('color', '#FFF');
+                $('img.oriImg').css('filter', 'invert(1)');
+                $('#chkDark').prop("checked", true);
+            }
+        });
+    </script>
+    <style type="text/css">
+        body {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            font-family: Montserrat-Regular, sans-serif;
+            margin: 0;
+            box-sizing: border-box;
+            display: block;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat-Regular';
+            src: url(Montserrat-Regular.ttf);
+        }
+        
+        input[type="button"],
+        [type="checkbox"] {
+            cursor: pointer;
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+        
+        input[type="button"] {
+            height: 26px;
+            font-weight: 900;
+            -webkit-appearance: button;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .wrapper {
+            display: grid;
+            grid-template-columns: 640px 640px;
+            grid-template-rows: 30px 360px 360px 30px;
+            grid-gap: 2px;
+        }
+        
+        .tpL {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        
+        .tpR {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        
+        .fd1 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+        
+        .fd2 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+        
+        .fd3 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+        
+        .fd4 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+        
+        .btL {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+        
+        .btR {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+        
+        .dRow {
+            width: 1284px;
+        }
+        
+        .refreshFeed {
+            margin-left: 4px;
+            cursor: pointer;
+        }
+        
+        .zoomBtns {
+            float: right;
+            margin-right: 50px;
+        }
+        
+        .curZoom {
+            margin: 0px 10px;
+            font-weight: 900;
+        }
+        
+        .swapBtns {
+            float: right;
+            font-size: .9rem;
+        }
+        
+        .chkDark {
+            float: right;
+            font-size: .9rem;
+            margin-right: 5px;
+        }
+        
+        .oriImg {
+            height: 28px;
+            width: 28px;
+            margin: 0 5px -8px 0;
+            cursor: pointer;
+        }
+        
+        .colImg {
+            height: 28px;
+            width: 28px;
+            margin: 0 5px -8px 0;
+            cursor: pointer;
+        }
+        
+        .rowImg {
+            height: 28px;
+            width: 28px;
+            margin: 0 5px -8px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="feeds-wrapper">
+        <div id="quadTable">
+            <div class="wrapper" id="grid">
+                <div class="tpL"><span id="rf1"><i class="fa-solid fa-rotate refreshFeed" title="Refresh this feed" data-feed-num="1"></i><span>  Live Feed 1 </span><span class="zoomBtns">Zoom Page: <input id="zoomDown" class="zoomBtn" type="button" value="DOWN"> <input id="zoomUp" class="zoomBtn" type="button" value=" UP "> <input id="zoomReset" class="zoomBtn" type="button" value="RESET"><span id="zoomLevel" class="curZoom">1.0</span>
+                    <input type="checkbox" id="saveZoom">Save</input>
+                    </span>
+                    </span>
+                </div>
+                <div class="tpR"><span id="rf3"><i class="fa-solid fa-rotate refreshFeed" title="Refresh this feed" data-feed-num="3"></i><span>  Live Feed 3 </span><span class="swapBtns">Change Orientation: <img class="oriImg" data-src="vert" src=""  title="Change the orientation of the way feeds are displayed."/>| Swap Rows: <img class="rowImg" src="" title="Exchange top row for bottom row."/>| Swap Columns: <img class="colImg" src="" title="Exchange first column with second column."/></span></span>
+                </div>
+                <div class="fd1"><span id="feed1"><div class="live-player-container live-player-container-16x9" style="width: 640px;height: 360px;"><img src="1.png" style="width:640px;height:360px;"></div></span></div>
+                <div class="fd2"><span id="feed2"><div class="live-player-container live-player-container-16x9" style="width: 640px;height: 360px;"><img src="2.png" style="width:640px;height:360px;"></div></span></div>
+                <div class="fd3"><span id="feed3"><div class="live-player-container live-player-container-16x9" style="width: 640px;height: 360px;"><img src="3.png" style="width:640px;height:360px;"></div></span></div>
+                <div class="fd4"><span id="feed4"><div class="live-player-container live-player-container-16x9" style="width: 640px;height: 360px;"><img src="4.png" style="width:640px;height:360px;"></div></span></div>
+                <div class="btL"><span id="rf2"><i class="fa-solid fa-rotate refreshFeed" title="Refresh this feed" data-feed-num="2"></i><span>  Live Feed 2 </span></span>
+                </div>
+                <div class="btR"><span id="rf4"><i class="fa-solid fa-rotate refreshFeed" title="Refresh this feed" data-feed-num="4"></i><span>  Live Feed 4 </span><span class="chkDark"><input type="checkbox" id="chkDark">Dark Background</input></span></span>
+                </div>
+            </div>
+        </div>
+        <div id="chkHdrRow" class="dRow"></div>
+    </div>
+</body>
+
+</html>
